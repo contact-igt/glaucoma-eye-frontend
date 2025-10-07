@@ -1,0 +1,58 @@
+.container {
+  min-height: 90vh;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.videoContainer iframe {
+  border-radius: 2rem;
+  width: 560px;
+  height: 315px;
+}
+.title{
+    width: 100%;
+}
+
+.card {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+  text-align: start;
+  width: 580px;
+  border: 1px solid #2f74b1;
+  background-color: #f4faff;
+  border-radius: 1.5rem;
+  padding: 1.1rem;
+  margin-top: 20px;
+}
+
+.card h4 {
+  color: #5382b0;
+  margin-left: 30px;
+}
+
+.card ul {
+  list-style-type: disc;
+  list-style-position: inside;
+  color: #333;
+  margin-bottom: 0;
+}
+.card ul li {
+  font-size: 15px;
+}
+.card ul li::marker {
+  color: #5382b0;
+}
+
+@media (width < 768px) {
+  .card {
+    width: 95%;
+  }
+  .videoContainer{
+    width: 95%;
+  }
+  .videoContainer iframe {
+    width: 100%;
+  }
+}

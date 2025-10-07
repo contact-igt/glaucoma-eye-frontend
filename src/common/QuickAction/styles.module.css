@@ -1,0 +1,29 @@
+.quickBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  padding: 16px 0;
+  z-index: 1050;
+}
+
+.actionBtn {
+  /* width: 50px;
+  height: 50px; */
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  gap: 4px;
+  margin: 2px 0;
+}
+
+.actionBtn p{
+  font-size: 13.5px;
+   color: #6c757d;
+  margin-bottom: 0;
+}

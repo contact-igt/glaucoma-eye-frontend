@@ -1,0 +1,23 @@
+.card{
+    border-radius:20px;
+    min-width: 500px;
+    padding: 15px 20px;
+}
+
+.card form{
+    width: 100%;
+}
+
+
+@media( width<768px){
+.card{
+    width: 100%;
+     max-width: 100%;
+}
+}
+
+@media (width<576px) {
+    .card{
+         min-width: unset !important;
+    }
+}

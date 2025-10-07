@@ -1,0 +1,75 @@
+.faqsec {
+    padding: 40px 0px;
+}
+
+.question button {
+    font-size: 22px;
+}
+
+.faqsec button {
+    padding: 20px 30px;
+}
+
+.accordionbody {
+    padding: 0px 30px;
+}
+
+.accordionbodybtn {
+    cursor: pointer;
+}
+
+
+.accordionbodybtn {
+    color: #2a3b77;
+    margin: 10px 0px;
+    padding: 12px 30px;
+
+}
+
+.footercta a,.footercta button {
+    width: 100% !important;
+}
+
+
+.footerctastable {
+    display: none !important;
+}
+
+.footercta {
+    display: block;
+}
+
+
+
+@media (width < 1200px) {
+    .question button {
+        font-size: 18px;
+    }
+
+
+}
+
+@media(width < 768px){
+      .stablediv {
+        position: fixed;
+        left: 0;
+        bottom: 0px;
+        width: 100%;
+        background-color: #fff;
+        padding: 20px;
+      box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.10);
+    }
+}
+
+@media (width < 576px) {
+    .footerctastable {
+        display: block;
+        position: fixed;
+        bottom: 10px;
+    }
+
+    .footercta {
+        display: none !important;
+    }
+
+}

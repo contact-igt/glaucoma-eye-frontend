@@ -1,0 +1,98 @@
+.card {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.statItem {
+  position: relative;
+}
+
+
+
+@media (min-width: 992px) {
+  .statItem:not(:last-child) {
+    border-right: 1px solid #dee2e6;
+  }
+}
+
+.statNumber {
+  color: #21a179;
+  font-size: 2rem;
+}
+
+.statText {
+  font-size: 1rem;
+  margin: 0;
+  color: #333;
+}
+
+
+@media (max-width: 1400px) {
+  .statNumber {
+    font-size: 1.8rem;
+  }
+  .statText {
+    font-size: 0.95rem;
+  }
+}
+
+
+@media (max-width: 1200px) {
+  .statNumber {
+    font-size: 1.6rem;
+  }
+  .statText {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .card {
+    width: 70%;
+    border-radius: 16px;
+    padding: 1.5rem !important;
+  }
+  .statNumber {
+    font-size: 1.5rem;
+  }
+  .statItem {
+    border-right: none !important;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+  }
+  .statItem:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    border-radius: 14px;
+    width:90%;
+    padding: 1.2rem !important;
+  }
+  .statNumber {
+    font-size: 1.4rem;
+  }
+  .statText {
+    font-size: 0.85rem;
+  }
+}
+
+
+@media (max-width: 576px) {
+  .card {
+    width: 100%;
+    border-radius: 12px;
+    padding: 1rem !important;
+  }
+  .statNumber {
+    font-size: 1.2rem;
+  }
+  .statText {
+    font-size: 0.8rem;
+  }
+}

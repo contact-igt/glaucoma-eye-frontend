@@ -1,0 +1,11 @@
+.title h4 {
+    font-size: 22px;
+    font-weight: 600;
+
+}
+
+@media (width < 576px) {
+.title{
+    text-align: center;
+}    
+}

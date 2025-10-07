@@ -1,0 +1,20 @@
+.card {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 20px; 
+  border: 1px solid red;
+  background-color: #FDE2E2;
+}
+
+.card ul{
+  list-style: none; 
+  padding-left: 1.2rem;
+}
+
+.card ul li::before {
+  content: "•";             
+  color: red;         
+  font-weight: bold;
+  display: inline-block;
+  width: 1rem;          
+  margin-left: -1rem;
+}

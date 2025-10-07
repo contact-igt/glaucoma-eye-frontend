@@ -1,0 +1,172 @@
+.headerWrapper {
+  font-family: "Poppins", sans-serif !important;
+}
+
+.consultationBox {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+
+.imgContainer {
+  width: 150px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  margin-right: 8px;
+}
+
+/* Validation Message */
+.validationMessage {
+  color: #d93025;
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+  display: none;
+}
+
+/* Buttons */
+.call, 
+.whatsapp {
+  display: inline-block;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 12px 40px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.call {
+  background-color: #ff6f61;
+  color: #fff;
+}
+.call:hover {
+  background-color: #e55b4f;
+  color: #fff;
+}
+
+.whatsapp {
+  background-color: #21a179;
+  color: #fff;
+}
+.whatsapp:hover {
+  background-color: #1a8361;
+  color: #fff;
+}
+
+@media (max-width: 1400px) {
+  .consultationBox {
+    padding: 1.2rem;
+  }
+  .call, .whatsapp {
+    padding: 10px 32px;
+    font-size: 0.95rem;
+  }
+}
+
+
+@media (max-width: 1200px) {
+  .imgContainer {
+    width: 130px;
+    height: 65px;
+  }
+}
+
+@media (max-width: 992px) {
+  .consultationBox {
+    padding: 1rem;
+  }
+  .call, .whatsapp {
+    padding: 10px 28px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+    .imgContainer {
+    width: 50%;
+  }
+  .imageContainer img{
+      width: 130px;
+    height: 55px;
+  }
+  .call, .whatsapp {
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+      .buttonGroup{
+        width: 50%;
+    display: flex;
+        justify-content: end;
+    flex-wrap: wrap;
+  }
+  .buttonGroup a{
+    width: 100%;
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 576px) {
+  .consultationBox {
+    padding: 0.8rem;
+    border-radius: 8px;
+  }
+      .imgContainer {
+    width: 32%;
+  }
+  .imageContainer img{
+      width: 130px;
+    height: 55px;
+  }
+  .imgContainer img {
+    min-width: 90px;
+    min-height: 45px;
+  }
+  .call, .whatsapp {
+    font-size: 0.85rem;
+    padding: 10px 24px;
+  }
+      .buttonGroup{
+        width: 68%;
+    display: flex;
+    justify-content: end;
+    flex-wrap: wrap;
+  }
+  .buttonGroup a{
+    width: 100%;
+  }
+}
+
+@media (max-width:450px){
+  .imgContainer{
+    width: 30%;
+  }
+  .imgContainer img {
+    width: 120px;
+    height: 120px;
+  }
+  .headerContainer{
+    padding: 0 !important;
+  }
+       .buttonGroup{
+        width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .buttonGroup a{
+    width: 100%;
+  }
+}

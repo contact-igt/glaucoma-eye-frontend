@@ -1,0 +1,30 @@
+.patientsaysec {
+      padding-top: 40px;
+
+}
+
+.patientcard {
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid  #21a179;
+    background-color: #fff;
+}
+
+.patientcard h5 {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.patientcard h6 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.patientcard p {
+    font-size: 12px;
+    font-weight: 4090;
+}
+
+.patientcard button {
+    width: 100%;
+}

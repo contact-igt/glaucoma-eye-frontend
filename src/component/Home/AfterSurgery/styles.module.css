@@ -1,0 +1,34 @@
+.aftersurgerysec {
+       padding-top: 40px;
+
+}
+
+.surgerycard {
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.surgerycard h4 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.surgerycard p {
+    font-size: 16px;
+    margin: 0px;
+}
+
+.aftersurgerysec button {
+    padding: 12px 60px !important;
+}
+
+@media (width < 1200px) {
+    .surgerycard h4 {
+    font-size: 22px;
+}
+
+.surgerycard p {
+    font-size: 15px;
+}
+    
+}
