@@ -30,16 +30,44 @@ const Form = ({ handleTogglecontactForm, title }) => {
       setError("Enter a valid 10-digit mobile number.");
       return;
     }
+
     try {
       setLoading(true);
       const ipResponse = await fetch("https://api.ipify.org?format=json");
       const ipData = await ipResponse.json();
+
+      const registerFormData = {
+        name: formData?.PatientName,
+        mobile: formData.MobileNumber,
+        ip_address: ipData.ip,
+        utm_source: localStorage.getItem("utm_source"),
+        page_name: "glaucoma",
+      }
+
+      const registerResponse = await fetch(
+        "https://stageapi.invictusglobaltech.com/api/v1/pixel-eye",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams(registerFormData).toString(),
+        }
+      );
+
+      if (!registerResponse.ok) {
+        setError("Something went wrong. Please try again.");
+        setLoading(false);
+        return;
+      }
+
       const newFormData = {
         PatientName: formData?.PatientName,
         MobileNumber: formData.MobileNumber,
         IP_Address: ipData.ip,
         utm_source: localStorage.getItem("utm_source"),
       }
+
       const response = await fetch(
         "https://script.google.com/macros/s/AKfycbz_c03f1klAKji0nhi_2uXKEW_yHRHxBqhYgW_F7COAmjhfXEhAOtWf-h5YzAbc8lXu/exec",
         {
@@ -57,7 +85,8 @@ const Form = ({ handleTogglecontactForm, title }) => {
         "template_gr9dlqd",
         {
           patient_name: formData.PatientName || "Guest Patient",
-          mobile_number: formData.MobileNumber, service_name: "Glaucoma Treatment",
+          mobile_number: formData.MobileNumber, 
+          service_name: "Glaucoma Treatment",
           email_subject: "Glaucoma Eye Care",
           from_name: "Pixel Eye Hospitals",
           from_email: "info@pixeleyehospitals.com"
@@ -72,6 +101,7 @@ const Form = ({ handleTogglecontactForm, title }) => {
       setError("Something went wrong. Please try again.");
     }
   };
+
   const getFormContent = (title) => {
     if (title.title === "Check" && title.subtitle === "Surgery Cost") {
       return {
