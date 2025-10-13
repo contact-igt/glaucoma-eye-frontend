@@ -42,9 +42,14 @@ const RightSticky = () => {
         utm_source: localStorage.getItem("utm_source"),
         page_name: "glaucoma",
       }
-
+      const APISERVER =
+        process.env.NEXT_PUBLIC_API_SERVER === "production"
+          ? process.env.NEXT_PUBLIC_PRODUCTION_API_URL
+          : process.env.NEXT_PUBLIC_API_SERVER === "stage"
+            ? process.env.NEXT_PUBLIC_STAGE_API_URL
+            : process.env.NEXT_PUBLIC_LOCALHOST_API_URL;
       const registerResponse = await fetch(
-        "https://stageapi.invictusglobaltech.com/api/v1/pixel-eye",
+        `${APISERVER}/pixel-eye`,
         {
           method: "POST",
           headers: {
