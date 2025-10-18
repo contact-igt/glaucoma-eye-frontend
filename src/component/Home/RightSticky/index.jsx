@@ -84,7 +84,7 @@ const RightSticky = () => {
       );
 
       await emailjs.send(
-        "service_wy9rlgc",
+        "service_wiw9jr5",
         "template_gr9dlqd",
         {
           patient_name: formData.PatientName || "Guest Patient",
