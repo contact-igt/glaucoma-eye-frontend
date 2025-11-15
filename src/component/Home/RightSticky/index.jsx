@@ -35,35 +35,35 @@ const RightSticky = () => {
       const ipResponse = await fetch("https://api.ipify.org?format=json");
       const ipData = await ipResponse.json();
 
-      const registerFormData = {
-        name: formData?.PatientName,
-        mobile: formData.MobileNumber,
-        ip_address: ipData.ip,
-        utm_source: localStorage.getItem("utm_source"),
-        page_name: "glaucoma",
-      }
-      const APISERVER =
-        process.env.NEXT_PUBLIC_API_SERVER === "production"
-          ? process.env.NEXT_PUBLIC_PRODUCTION_API_URL
-          : process.env.NEXT_PUBLIC_API_SERVER === "stage"
-            ? process.env.NEXT_PUBLIC_STAGE_API_URL
-            : process.env.NEXT_PUBLIC_LOCALHOST_API_URL;
-      const registerResponse = await fetch(
-        `${APISERVER}/pixel-eye`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: new URLSearchParams(registerFormData).toString(),
-        }
-      );
+      // const registerFormData = {
+      //   name: formData?.PatientName,
+      //   mobile: formData.MobileNumber,
+      //   ip_address: ipData.ip,
+      //   utm_source: localStorage.getItem("utm_source"),
+      //   page_name: "glaucoma",
+      // }
+      // const APISERVER =
+      //   process.env.NEXT_PUBLIC_API_SERVER === "production"
+      //     ? process.env.NEXT_PUBLIC_PRODUCTION_API_URL
+      //     : process.env.NEXT_PUBLIC_API_SERVER === "stage"
+      //       ? process.env.NEXT_PUBLIC_STAGE_API_URL
+      //       : process.env.NEXT_PUBLIC_LOCALHOST_API_URL;
+      // const registerResponse = await fetch(
+      //   `${APISERVER}/pixel-eye`,
+      //   {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/x-www-form-urlencoded",
+      //     },
+      //     body: new URLSearchParams(registerFormData).toString(),
+      //   }
+      // );
 
-      if (!registerResponse.ok) {
-        setError("Something went wrong. Please try again.");
-        setLoading(false);
-        return;
-      }
+      // if (!registerResponse.ok) {
+      //   setError("Something went wrong. Please try again.");
+      //   setLoading(false);
+      //   return;
+      // }
       const newFormData = {
         PatientName: formData?.PatientName,
         MobileNumber: formData.MobileNumber,
