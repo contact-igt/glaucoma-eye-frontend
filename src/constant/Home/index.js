@@ -56,7 +56,7 @@ export const HomeData = {
       },
       {
         title: "Increased Treatment Complexity",
-        description: "Late-stage glaucoma requires more intensive care and higher costs",
+        description: "Late stage glaucoma requires more intensive care and higher costs",
       },
     ],
   },
@@ -66,14 +66,16 @@ export const HomeData = {
       {
         img: "/assets/dr-abdul-rasheed.webp",
         name: "Dr. Abdul Rasheed",
-        destination: "MD - AIIMS Cataract , Refractive & Squint Surgeon",
+        destination1: "MD - AIIMS Cataract,",
+        destination2: "Refractive & Squint Surgeon",
         experience: "12 Years",
         reviews: "97%",
       },
       {
         img: "/assets/dr-krishna-poojita.webp",
         name: "Dr. Krishna Poojita",
-        destination: "MBBS, DNB (Ophthalmology), MRCS (Edinburgh), FICO (UK)",
+        destination1: "MBBS, DNB (Ophthalmology),",
+        destination2: "MRCS (Edinburgh), FICO (UK)",
         experience: "15 Years",
         reviews: "97%",
       },
@@ -90,7 +92,7 @@ export const HomeData = {
   treatmentData: [
     {
       icon: "/assets/treat1.png",
-      title: "Type of Glaucoma",
+      title: "Types of Glaucoma",
     },
     {
       icon: "/assets/treat2.png",

@@ -15,7 +15,8 @@ const TopDoctor = ({ data, handleTogglecontactForm }) => {
               img={item?.img}
               experience={item?.experience}
               reviews={item?.reviews}
-              destination={item?.destination}
+              destination1={item?.destination1}
+              destination2={item?.destination2}
               data={data}
               handleTogglecontactForm={handleTogglecontactForm}
             />

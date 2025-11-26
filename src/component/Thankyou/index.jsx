@@ -31,7 +31,7 @@ const Thankyou = () => {
             </div>
             <div className="mt-4">
                 <Button href="https://www.pixeleyehospitals.com/"
-               isbtn3={true} name="Back to Home" bgcolor="#cf873d" txtcolor="#fff" isicon={true} icon={"arrow-right"} iconcolor={"#fff"} />
+               isbtn2={true} name="Back to Home" bgcolor="#cf873d" txtcolor="#fff" isicon={true} icon={"arrow-left"} iconcolor={"#fff"} />
             </div>
         </section>
     );
