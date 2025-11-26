@@ -5,8 +5,8 @@ const HomeBanner = ({ data,statsData }) => {
     return (
         <div className="container-md-fluid d-flex justify-content-center" style={{ backgroundColor: '#f0fcff' }}>
             <div className={`${styles.container} d-flex justify-content-center align-items-end w-100`}>
-                <div className="w-100 d-flex gap-lg-5 align-items-end flex-column flex-lg-row">
-                    <div className="d-flex w-100 justify-content-end pb-lg-4 flex-column mb-lg-4 px-4 px-md-0 mb-md-0">
+                <div className="w-100 row gap-lg-3 align-items-center flex-column flex-lg-row">
+                    <div className="d-flex col-12 col-lg-5 justify-content-end pb-lg-4 flex-column mb-lg-4 px-4 px-md-0 mb-md-0">
                         <h1 className={`fw-bold fs-1 ${styles.title}`}>
                             {data?.title}
                         </h1>
@@ -39,7 +39,7 @@ const HomeBanner = ({ data,statsData }) => {
                         </div>
                     </div>
 
-                    <div className="mt-0 w-100 d-flex justify-content-center">
+                    <div className="mt-0 col-12 col-lg-5 d-flex justify-content-center">
                             <Image
                                 src="/assets/bannerImage.jpg"
                                 alt="Banner"
