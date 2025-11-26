@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./styles.module.css";
 import Button from "../Button";
 
-const DoctorCard = ({ name, destination, experience, reviews, img, data, handleTogglecontactForm }) => {
+const DoctorCard = ({ name, destination1, destination2, experience, reviews, img, data, handleTogglecontactForm }) => {
     return (
         <div className={`card ${styles.card} border-0 d-flex flex-row align-items-center justify-content-between`}>
             <div className={`d-flex ${styles.cardContent} gap-lg-0 align-items-center`}>
@@ -13,7 +13,8 @@ const DoctorCard = ({ name, destination, experience, reviews, img, data, handleT
                 />
                 <div className={` ms-3`}>
                     <h5 className="mb-1 fw-bold">{name}</h5>
-                    <p className={`mb-2 text-muted ${styles.destination}`}>{destination}</p>
+                    <p className={`mb-0 text-muted ${styles.destination}`}>{destination1}</p>
+                    <p className={`mb-2 text-muted ${styles.destination}`}>{destination2}</p>
 
                     <div className="d-flex align-items-start">
                         <div className="me-3 d-flex flex-column align-items-start border-end pe-3">

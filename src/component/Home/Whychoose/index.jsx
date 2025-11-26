@@ -5,7 +5,7 @@ const WhyChoose = ({ chooselist , handleTogglecontactForm }) => {
   return (
     <section className={styles.whychoosesec}>
       <div>
-        <Title title={"Why Choose Pixel Eye Hospital"} />
+        <Title title={"Why Choose Pixel Eye Hospital?"} />
 
         <div className={`${styles.choosepoint} commonshadow mt-4 `} onClick={handleTogglecontactForm}>
           {chooselist?.map((data, i) => (
