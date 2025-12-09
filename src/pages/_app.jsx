@@ -1,3 +1,4 @@
+import Preloader from "@/common/Preloader";
 import useUTMSource from "@/hooks/useUTMSource";
 import "@/styles/globals.css";
 // import Script from "next/script";
@@ -5,5 +6,9 @@ import "@/styles/globals.css";
 export default function App({ Component, pageProps }) {
   useUTMSource();
   return (
-    <Component {...pageProps} />)
+    <>
+      <Preloader />
+      <Component {...pageProps} />
+    </>
+  )
 }

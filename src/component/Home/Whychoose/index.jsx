@@ -10,6 +10,7 @@ const WhyChoose = ({ chooselist , handleTogglecontactForm }) => {
         <div className={`${styles.choosepoint} commonshadow mt-4 `} onClick={handleTogglecontactForm}>
           {chooselist?.map((data, i) => (
             <div
+            key={i}
               className={`d-flex align-items-center gap-2 my-2 ${styles.choosecard}`}
             >
               <h5 className={styles.pointgreen}></h5>

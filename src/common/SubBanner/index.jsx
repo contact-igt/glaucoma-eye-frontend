@@ -58,7 +58,6 @@ const SubBanner = ({
             </div>
           </div>
           <div className={`${styles.imageContainer} col-lg-5 d-flex align-items-start justify-content-start`} style={{ position: 'relative', height: height ? height : "180px" }}>
-            <div style={{}}>
               <Image
                 src={img ? img : '/placeholder.jpg'}
                 alt="sub-banner-img"
@@ -69,10 +68,10 @@ const SubBanner = ({
                   transform: `scale(${scale})`,
                   objectPosition: 'center center'
                 }}
+                sizes="(max-width: 768px) 100vw, 300px"
                 className={styles.subBannerImg}
                 priority={true}
               />
-            </div>
           </div>
         </div>
       </div>

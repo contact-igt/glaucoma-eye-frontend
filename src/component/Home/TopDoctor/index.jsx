@@ -9,7 +9,7 @@ const TopDoctor = ({ data, handleTogglecontactForm }) => {
       <div className="mt-5 my-3">
         <Title name={data?.title} />
         <div className="w-100 d-flex gap-4 flex-column justify-content-start mt-3">
-          {data?.doctorList?.map((item) => (
+          {data?.doctorList?.map((item,index) => (
             <DoctorCard
               name={item?.name}
               img={item?.img}
@@ -18,6 +18,7 @@ const TopDoctor = ({ data, handleTogglecontactForm }) => {
               destination1={item?.destination1}
               destination2={item?.destination2}
               data={data}
+              key={index}
               handleTogglecontactForm={handleTogglecontactForm}
             />
           ))}

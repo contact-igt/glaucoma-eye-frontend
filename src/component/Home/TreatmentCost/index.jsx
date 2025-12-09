@@ -23,7 +23,8 @@ const TreatmentCost = ({ treatmentlist, handleTogglecontactForm }) => {
                   src={data?.icon}
                   width={50}
                   height={50}
-                  objectFit="cover"
+                  style={{objectFit:"cover"}}
+                  alt={data.title}
                 />
               </div>
             </div>

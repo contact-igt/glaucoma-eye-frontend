@@ -20,7 +20,7 @@ const FAQ = ({ faqlist, handleTogglecontactForm }) => {
 
         <div className="accordion commonshadow my-4" id="accordionExample">
           {faqlist.map((data, i) => (
-            <div className="accordion-item">
+            <div className="accordion-item" key={i}>
               <h2 className={`accordion-header ${styles.question}`}>
                 <button
                   className="accordion-button"
