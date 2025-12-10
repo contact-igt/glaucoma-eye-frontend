@@ -17,7 +17,7 @@ const PatientSay = ({handleTogglecontactForm}) => {
               alt="google-logo"
               width={100}
               height={35}
-              objectFit="cover"
+              style={{objectFit:"cover"}}
             />
             <h5 className="m-0">Reviews</h5>
           </div>

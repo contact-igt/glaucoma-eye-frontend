@@ -95,7 +95,7 @@
 
 @media (max-width: 768px) {
     .imgContainer {
-    width: 50%;
+    width: 26%;
   }
   .imageContainer img{
       width: 130px;
@@ -110,7 +110,7 @@
       .buttonGroup{
         width: 50%;
     display: flex;
-        justify-content: end;
+        justify-content: flex-end;
     flex-wrap: wrap;
   }
   .buttonGroup a{
@@ -142,7 +142,7 @@
       .buttonGroup{
         width: 68%;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     flex-wrap: wrap;
   }
   .buttonGroup a{

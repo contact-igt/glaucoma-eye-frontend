@@ -26,7 +26,11 @@
   justify-content: center;
   align-items: center;
 }
-
+.bannerWrapper {
+  position: relative;
+  width: 600px;
+  height: 700px;
+}
 .banner-container::before {
   content: "";
   position: absolute;

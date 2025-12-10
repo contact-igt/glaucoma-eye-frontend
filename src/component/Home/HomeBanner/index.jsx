@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./styles.module.css"
 
-const HomeBanner = ({ data,statsData }) => {
+const HomeBanner = ({ data, statsData }) => {
     return (
         <div className="container-md-fluid d-flex justify-content-center" style={{ backgroundColor: '#f0fcff' }}>
             <div className={`${styles.container} d-flex justify-content-center align-items-end w-100`}>
@@ -40,19 +40,22 @@ const HomeBanner = ({ data,statsData }) => {
                     </div>
 
                     <div className="mt-0 col-12 col-lg-5 d-flex justify-content-center">
+                        <div className={styles.bannerWrapper}>
                             <Image
                                 src="/assets/bannerImage.jpg"
+                                fill
                                 alt="Banner"
-                                width={530}
-                                height={540}
                                 style={{
                                     objectFit: 'cover',
                                     display: 'block',
                                     top: '0',
                                     left: '0',
                                 }}
+                                priority={true}
+                                sizes="(max-width: 768px) 100vw, 300px"
                                 className={styles.bannerimage}
                             />
+                        </div>
                     </div>
                 </div>
             </div>

@@ -12,8 +12,8 @@ const DelayRisk = ({ data, handleTogglecontactForm }) => {
         onClick={handleTogglecontactForm}
       >
         <ul className="fs-6 mt-3 list-disc">
-          {data?.riskList?.map((item) => (
-            <li className="mb-3">
+          {data?.riskList?.map((item, i) => (
+            <li key={i} className="mb-3">
               <span style={{ fontWeight: "600" }}>{item.title} </span>-{" "}
               {item.description}
             </li>

@@ -6,7 +6,7 @@ const Thankyou = () => {
 
     return (
         <section className={`${styles.container} d-flex justify-content-center align-items-center flex-column`}>
-            <Image src="/assets/check.png" alt="" width={120} height={120} className={styles.image}/>
+            <Image src="/assets/check.png" alt="check" width={120} height={120} className={styles.image}/>
             <h1 className={`${styles.title} mt-3 fw-bold`}>Thank You for Booking Your Consultation!</h1>
             <p>We’ve received your mobile number and our specialist will contact you soon.</p>
 
