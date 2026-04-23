@@ -36,6 +36,22 @@ const Form = ({ handleTogglecontactForm, title }) => {
       const ipResponse = await fetch("https://api.ipify.org?format=json");
       const ipData = await ipResponse.json();
 
+      await fetch(
+        "https://www.privyr.com/api/v1/incoming-leads/0vZfjMQw/xKtkqD5A",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData?.PatientName,
+            phone: "+91" + formData.MobileNumber,
+            display_name: formData?.PatientName,
+            source: "Glaucoma Landing Page",
+          }),
+        },
+      );
+
       // const registerFormData = {
       //   name: formData?.PatientName,
       //   mobile: formData.MobileNumber,
@@ -71,7 +87,7 @@ const Form = ({ handleTogglecontactForm, title }) => {
         MobileNumber: formData.MobileNumber,
         IP_Address: ipData.ip,
         utm_source: localStorage.getItem("utm_source"),
-      }
+      };
 
       const response = await fetch(
         "https://script.google.com/macros/s/AKfycbz_c03f1klAKji0nhi_2uXKEW_yHRHxBqhYgW_F7COAmjhfXEhAOtWf-h5YzAbc8lXu/exec",
@@ -82,7 +98,7 @@ const Form = ({ handleTogglecontactForm, title }) => {
             "Content-Type": "application/x-www-form-urlencoded",
           },
           body: new URLSearchParams(newFormData).toString(),
-        }
+        },
       );
 
       await emailjs.send(
@@ -90,16 +106,16 @@ const Form = ({ handleTogglecontactForm, title }) => {
         "template_gr9dlqd",
         {
           patient_name: formData.PatientName || "Guest Patient",
-          mobile_number: formData.MobileNumber, 
+          mobile_number: formData.MobileNumber,
           service_name: "Glaucoma Treatment",
           email_subject: "Glaucoma Eye Care",
           from_name: "Pixel Eye Hospitals",
-          from_email: "info@pixeleyehospitals.com"
+          from_email: "info@pixeleyehospitals.com",
         },
-        "4yBxE-kzbe7EuZqFh"
+        "4yBxE-kzbe7EuZqFh",
       );
       setLoading(false);
-      router.push("/thank-you")
+      router.push("/thank-you");
     } catch (error) {
       console.error(error);
       setLoading(false);
@@ -120,13 +136,19 @@ const Form = ({ handleTogglecontactForm, title }) => {
         fields: { nameField: true, numberField: true },
       };
     }
-    if (title.title === "Your Health," && title.subtitle === "Simplified By AI") {
+    if (
+      title.title === "Your Health," &&
+      title.subtitle === "Simplified By AI"
+    ) {
       return {
         heading: "Book Consultation",
         fields: { nameField: true, numberField: true },
       };
     }
-    if (title.title === "Find Out If" && title.subtitle === "Glaucoma Treatment is Right for You") {
+    if (
+      title.title === "Find Out If" &&
+      title.subtitle === "Glaucoma Treatment is Right for You"
+    ) {
       return {
         heading: "Check Eligibility",
         fields: { nameField: false, numberField: true },
@@ -192,10 +214,15 @@ const Form = ({ handleTogglecontactForm, title }) => {
             />
           </div>
         )}
-        {error && <p className="mt-2" style={{ color: "#ff6f61" }}>{error}</p>}
+        {error && (
+          <p className="mt-2" style={{ color: "#ff6f61" }}>
+            {error}
+          </p>
+        )}
         <div className="d-grid mt-4">
           <Button
-            disabled={loading} name={loading ? "Booking..." : "Book Now"}
+            disabled={loading}
+            name={loading ? "Booking..." : "Book Now"}
             bgcolor="#ff6f61"
             txtcolor="#fff"
           />

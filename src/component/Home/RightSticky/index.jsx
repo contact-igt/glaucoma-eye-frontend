@@ -35,6 +35,23 @@ const RightSticky = () => {
       const ipResponse = await fetch("https://api.ipify.org?format=json");
       const ipData = await ipResponse.json();
 
+
+            await fetch(
+        "https://www.privyr.com/api/v1/incoming-leads/0vZfjMQw/xKtkqD5A",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData?.PatientName,
+            phone: "+91" + formData.MobileNumber,
+            display_name: formData?.PatientName,
+            source: "Glaucoma Landing Page",
+          }),
+        },
+      );
+
       // const registerFormData = {
       //   name: formData?.PatientName,
       //   mobile: formData.MobileNumber,
