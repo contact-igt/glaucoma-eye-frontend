@@ -1,7 +1,20 @@
 import Image from "next/image";
+import Slider from "react-slick";
 import styles from "./styles.module.css"
 
 const HomeBanner = ({ data, statsData }) => {
+    const sliderSettings = {
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        dots: false,
+        fade: true,
+        infinite: true,
+        pauseOnHover: false,
+        slidesToScroll: 1,
+        slidesToShow: 1,
+        speed: 600,
+    };
     return (
         <div className="container-md-fluid d-flex justify-content-center" style={{ backgroundColor: '#f0fcff' }}>
             <div className={`${styles.container} d-flex justify-content-center align-items-end w-100`}>
@@ -41,20 +54,26 @@ const HomeBanner = ({ data, statsData }) => {
 
                     <div className="mt-0 col-12 col-lg-5 d-flex justify-content-center">
                         <div className={styles.bannerWrapper}>
-                            <Image
-                                src="/assets/bannerImage.jpg"
-                                fill
-                                alt="Banner"
-                                style={{
-                                    objectFit: 'cover',
-                                    display: 'block',
-                                    top: '0',
-                                    left: '0',
-                                }}
-                                priority={true}
-                                sizes="(max-width: 768px) 100vw, 300px"
-                                className={styles.bannerimage}
-                            />
+                            <Slider {...sliderSettings} className={styles.bannerSlider}>
+                                {data?.images?.map((image, index) => (
+                                    <div key={index}>
+                                        <Image
+                                            src={image}
+                                            fill
+                                            alt="Banner"
+                                            style={{
+                                                objectFit: 'cover',
+                                                display: 'block',
+                                                top: '0',
+                                                left: '0',
+                                            }}
+                                            priority={index === 0}
+                                            sizes="(max-width: 768px) 100vw, 300px"
+                                            className={styles.bannerimage}
+                                        />
+                                    </div>
+                                ))}
+                            </Slider>
                         </div>
                     </div>
                 </div>
