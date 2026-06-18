@@ -29,7 +29,17 @@
 .bannerWrapper {
   position: relative;
   width: 600px;
-  height: 700px;
+  height: 580px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.bannerSlider,
+.bannerSlider :global(.slick-list),
+.bannerSlider :global(.slick-track),
+.bannerSlider :global(.slick-slide),
+.bannerSlider :global(.slick-slide > div) {
+  height: 100%;
 }
 .banner-container::before {
   content: "";

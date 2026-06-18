@@ -7,6 +7,11 @@ export const HomeData = {
       "Laser-Assisted & Minimally Invasive Therapies",
       "Affordable EMI Options – Start Treatment Now, Pay Later",
     ],
+    images: [
+      "/assets/bannerImage1.JPG",
+      "/assets/bannerImage2.JPG",
+      "/assets/bannerImage3.JPG",
+    ],
   },
   stats: [
     {
