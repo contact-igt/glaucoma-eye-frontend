@@ -9,8 +9,8 @@ export const HomeData = {
     ],
     images: [
       "/assets/bannerImage1.JPG",
-      "/assets/bannerImage2.JPG",
-      "/assets/bannerImage3.JPG",
+      "/assets/bannerImage22.JPG",
+      "/assets/bannerImage33.JPG",
     ],
   },
   stats: [
