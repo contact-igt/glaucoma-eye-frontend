@@ -89,7 +89,7 @@ const RightSticky = () => {
       }
 
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbz_c03f1klAKji0nhi_2uXKEW_yHRHxBqhYgW_F7COAmjhfXEhAOtWf-h5YzAbc8lXu/exec",
+        "https://script.google.com/macros/s/AKfycbwx-qJUbedUAOuGydebeSK81xlnPXQgq7Kn6b7gS9N_fd_noF1agbV3vDNsSEJ7Y6Cq/exec",
         {
           method: "POST",
           mode: "no-cors",
