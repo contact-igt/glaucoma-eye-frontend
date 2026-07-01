@@ -102,8 +102,8 @@ const Form = ({ handleTogglecontactForm, title }) => {
       );
 
       await emailjs.send(
-        "service_wiw9jr5",
-        "template_gr9dlqd",
+        "service_9ka2q7j",
+        "template_88icron",
         {
           patient_name: formData.PatientName || "Guest Patient",
           mobile_number: formData.MobileNumber,
@@ -112,7 +112,7 @@ const Form = ({ handleTogglecontactForm, title }) => {
           from_name: "Pixel Eye Hospitals",
           from_email: "info@pixeleyehospitals.com",
         },
-        "4yBxE-kzbe7EuZqFh",
+        "CNcEBk9-YnTm2Zwor",
       );
       setLoading(false);
       router.push("/thank-you");
