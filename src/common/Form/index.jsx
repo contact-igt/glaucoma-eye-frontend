@@ -1,7 +1,7 @@
 import Button from "@/common/Button";
+import { submitLeadForm } from "@/lib/leadSubmission";
 import React, { useState } from "react";
 import styles from "./styles.module.css";
-import emailjs from "emailjs-com";
 import { useRouter } from "next/router";
 
 const Form = ({ handleTogglecontactForm, title }) => {
@@ -12,108 +12,43 @@ const Form = ({ handleTogglecontactForm, title }) => {
     MobileNumber: "",
   });
   const [error, setError] = useState("");
+
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+    const nextValue =
+      name === "MobileNumber" ? value.replace(/\D/g, "").slice(0, 10) : value;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: nextValue,
+    }));
+
+    if (error) {
+      setError("");
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.MobileNumber) {
+    const mobileNumber = formData.MobileNumber.trim();
+
+    if (!mobileNumber) {
       setError("Mobile number is required.");
       return;
     }
     const phoneRegex = /^[6-9]\d{9}$/;
-    if (!phoneRegex.test(formData.MobileNumber)) {
+    if (!phoneRegex.test(mobileNumber)) {
       setError("Enter a valid 10-digit mobile number.");
       return;
     }
 
     try {
       setLoading(true);
-      const ipResponse = await fetch("https://api.ipify.org?format=json");
-      const ipData = await ipResponse.json();
-
-      await fetch(
-        "https://www.privyr.com/api/v1/incoming-leads/0vZfjMQw/xKtkqD5A",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: formData?.PatientName,
-            phone: "+91" + formData.MobileNumber,
-            display_name: formData?.PatientName,
-            source: "Glaucoma Landing Page",
-          }),
-        },
-      );
-
-      // const registerFormData = {
-      //   name: formData?.PatientName,
-      //   mobile: formData.MobileNumber,
-      //   ip_address: ipData.ip,
-      //   utm_source: localStorage.getItem("utm_source"),
-      //   page_name: "glaucoma",
-      // }
-      // const APISERVER =
-      //   process.env.NEXT_PUBLIC_API_SERVER === "production"
-      //     ? process.env.NEXT_PUBLIC_PRODUCTION_API_URL
-      //     : process.env.NEXT_PUBLIC_API_SERVER === "stage"
-      //       ? process.env.NEXT_PUBLIC_STAGE_API_URL
-      //       : process.env.NEXT_PUBLIC_LOCALHOST_API_URL;
-      // const registerResponse = await fetch(
-      //   `${APISERVER}/pixel-eye`,
-      //   {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/x-www-form-urlencoded",
-      //     },
-      //     body: new URLSearchParams(registerFormData).toString(),
-      //   }
-      // );
-
-      // if (!registerResponse.ok) {
-      //   setError("Something went wrong. Please try again.");
-      //   setLoading(false);
-      //   return;
-      // }
-
-      const newFormData = {
-        PatientName: formData?.PatientName,
-        MobileNumber: formData.MobileNumber,
-        IP_Address: ipData.ip,
-        utm_source: localStorage.getItem("utm_source"),
-      };
-
-      const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbz_c03f1klAKji0nhi_2uXKEW_yHRHxBqhYgW_F7COAmjhfXEhAOtWf-h5YzAbc8lXu/exec",
-        {
-          method: "POST",
-          mode: "no-cors",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: new URLSearchParams(newFormData).toString(),
-        },
-      );
-
-      await emailjs.send(
-        "service_9ka2q7j",
-        "template_88icron",
-        {
-          patient_name: formData.PatientName || "Guest Patient",
-          mobile_number: formData.MobileNumber,
-          service_name: "Glaucoma Treatment",
-          email_subject: "Glaucoma Eye Care",
-          from_name: "Pixel Eye Hospitals",
-          from_email: "info@pixeleyehospitals.com",
-        },
-        "CNcEBk9-YnTm2Zwor",
-      );
+      await submitLeadForm({
+        patientName: formData.PatientName.trim(),
+        mobileNumber,
+        formType: "popup",
+      });
       setLoading(false);
       router.push("/thank-you");
     } catch (error) {
@@ -191,6 +126,7 @@ const Form = ({ handleTogglecontactForm, title }) => {
             <input
               type="text"
               name="PatientName"
+              value={formData.PatientName}
               onChange={handleChange}
               className="form-control rounded-3 py-3"
               placeholder="Patient Name (Optional)"
@@ -207,6 +143,9 @@ const Form = ({ handleTogglecontactForm, title }) => {
             <input
               name="MobileNumber"
               type="tel"
+              inputMode="numeric"
+              maxLength={10}
+              value={formData.MobileNumber}
               onChange={handleChange}
               className="form-control border-start-0 rounded-end-3"
               placeholder="Mobile Number"
@@ -221,6 +160,7 @@ const Form = ({ handleTogglecontactForm, title }) => {
         )}
         <div className="d-grid mt-4">
           <Button
+            type="submit"
             disabled={loading}
             name={loading ? "Booking..." : "Book Now"}
             bgcolor="#ff6f61"
