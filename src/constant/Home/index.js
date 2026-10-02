@@ -8,9 +8,9 @@ export const HomeData = {
       "Affordable EMI Options – Start Treatment Now, Pay Later",
     ],
     images: [
-      "/assets/bannerImage1.JPG",
-      "/assets/bannerImage22.JPG",
-      "/assets/bannerImage33.JPG",
+      "/assets/bannerImage1.jpg",
+      "/assets/bannerImage22.jpg",
+      "/assets/bannerImage33.jpg",
     ],
   },
   stats: [
