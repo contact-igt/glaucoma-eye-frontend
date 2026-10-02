@@ -17,7 +17,7 @@ export default function Preloader() {
       <div className={styles.loader_wrapper}>
         <div className={styles.loader_circle}></div>
         <img
-          src="/assets/loader.png"
+          src="/assets/loader.jpeg"
           alt="Loading..."
           className={styles.loader_logo}
         />
