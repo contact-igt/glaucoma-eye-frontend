@@ -6,10 +6,11 @@ const DEFAULT_PATIENT_NAME = "User";
 const PIXELEYE_LEAD_API_PATH = "/api/v1/pixeleye/website-leads/register";
 const PIXELEYE_CLIENT_KEY =
   process.env.NEXT_PUBLIC_PIXELEYE_CLIENT_KEY?.trim() || "";
-const POPUP_GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbz_c03f1klAKji0nhi_2uXKEW_yHRHxBqhYgW_F7COAmjhfXEhAOtWf-h5YzAbc8lXu/exec";
-const STICKY_GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbwx-qJUbedUAOuGydebeSK81xlnPXQgq7Kn6b7gS9N_fd_noF1agbV3vDNsSEJ7Y6Cq/exec";
+const PIXELEYE_SOURCE_KEY = "glaucoma";
+// Fallback only: used when the backend API call fails. Popup and sticky forms
+// now share the single Glaucoma sheet.
+const GLAUCOMA_GOOGLE_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbz-B1DQKeKMamq7LdnAKm6ttGnXHJ0wBXnW6uuix89a5GSErdXFDw7ZXGlzUdlYXvTA/exec";
 
 function getBackendBaseUrl() {
   const backendBaseUrl =
@@ -19,7 +20,8 @@ function getBackendBaseUrl() {
     throw new Error("Backend base URL is missing.");
   }
 
-  return backendBaseUrl.replace(/\/$/, "");
+  // Accept the base URL with or without the /api/v1 suffix.
+  return backendBaseUrl.replace(/\/+(api\/v1)?\/*$/, "");
 }
 
 function getPixelEyeLeadApiUrl() {
@@ -64,6 +66,7 @@ async function submitPixelEyeLead({ patientName, mobileNumber, ipAddress }) {
       name: patientName,
       mobile_number: mobileNumber,
       service: DEFAULT_SERVICE,
+      source_key: PIXELEYE_SOURCE_KEY,
       ip_address: ipAddress,
       utm_source: getUTMSource(),
     }),
@@ -131,23 +134,28 @@ async function sendLeadEmail({ patientName, mobileNumber }) {
   );
 }
 
-export async function submitLeadForm({ patientName, mobileNumber, formType }) {
+export async function submitLeadForm({ patientName, mobileNumber }) {
   const normalizedPatientName = getNormalizedPatientName(patientName);
   const ipAddress = await getIPAddress();
-  const googleScriptUrl =
-    formType === "sticky" ? STICKY_GOOGLE_SCRIPT_URL : POPUP_GOOGLE_SCRIPT_URL;
 
-  await submitPixelEyeLead({
-    patientName: normalizedPatientName,
-    mobileNumber,
-    ipAddress,
-  });
-  await submitGoogleLead({
-    googleScriptUrl,
-    patientName: normalizedPatientName,
-    mobileNumber,
-    ipAddress,
-  });
+  // The backend saves the lead and mirrors it to the Google Sheet itself, so
+  // the Apps Script is only called when the backend call fails.
+  try {
+    await submitPixelEyeLead({
+      patientName: normalizedPatientName,
+      mobileNumber,
+      ipAddress,
+    });
+  } catch (error) {
+    console.error("PixelEye lead API failed, falling back to Google Apps Script", error);
+    await submitGoogleLead({
+      googleScriptUrl: GLAUCOMA_GOOGLE_SCRIPT_URL,
+      patientName: normalizedPatientName,
+      mobileNumber,
+      ipAddress,
+    });
+  }
+
   await submitPrivyrLead({
     patientName: normalizedPatientName,
     mobileNumber,
